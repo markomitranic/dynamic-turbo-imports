@@ -1,3 +1,20 @@
+This repository attempts to recteate the issue with `next dev --turbo` not properly dynamically loading files. It seems to always pick up whatever is the first file in the folder, with alphabetic sorting - regardless of what we actually asked for.
+
+Meanwhile, `next dev` works just fine.
+
+The repository is made with a vanilla `create-next-app`, with 2 commits adding the functionality, for easier reading.
+
+## Usage:
+0. `npm i` - Install dependencies
+1. `npm run dev` - Run the old dev server
+2. Visit `http://localhost:3000/en` and `http://localhost:3000/da` respectively, they should show their respective languages.
+3. `npm run turbo` - Run the Turbo experimental dev server
+4. Visit `http://localhost:3000/en` and `http://localhost:3000/da` respectively, they will show the contents of `/messages/_notUsed.json` which is not referenced to anywhere in the code.
+
+Obviously, if `/messages/_notUsed.json` is removed, they will both show the Danish file.
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
